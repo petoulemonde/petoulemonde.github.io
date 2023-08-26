@@ -23,3 +23,6 @@ Pharm. D., Data Scientist and Machine Learning Scientist
 ### Skills-based projects
 - Srap
 - etc...
+
+---
+<p style="font-size:11px">Page template enspired by <a href="https://github.com/evanca/quick-portfolio">evanca</a> and <a href="https://medium.com/@evanca/set-up-your-portfolio-website-in-less-than-10-minutes-with-github-pages-d0efa8ff56fd">Medium article from evanca</a></p>
