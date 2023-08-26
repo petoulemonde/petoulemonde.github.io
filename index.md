@@ -7,18 +7,18 @@ Pharm. D., Data Scientist and Machine Learning Scientist
 
 ### Projects
 
-
 <[Projet 1 Title](/sample_page)>
 
-Image
+<p>Image</p>
 
 ---
 
-Projet n°2
+<p>Projet n°2</p>
 
 ---
 
 - Projet 3
+
 ---
 ### Skills-based projects
 - Srap
