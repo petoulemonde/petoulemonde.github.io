@@ -9,7 +9,7 @@ Pharm. D., Data Scientist and Machine Learning Scientist
 
 <[Projet 1 Title](/sample_page)>
 
-![https://github.com/petoulemonde/programming_languages_project/README.md]
+[](https://github.com/petoulemonde/programming_languages_project/README.md)
 
 <p>Image</p>
 
