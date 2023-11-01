@@ -1,13 +1,8 @@
-## Data Scientist Portflio
+## Data science Portfolio
 
 ---
 
-### Education
-Pharm. D., Data Scientist and Machine Learning Scientist
-
-### Projects
-
-#### 1. Dr. Semmelweis and the Discovery of Handwashing
+### 1. Dr. Semmelweis and the Discovery of Handwashing
 
 **Short name**: Semmelweiss
 
@@ -23,7 +18,7 @@ In 1847, Dr. Semmelweis instated a policy where doctors had to use a chlorine so
 
 ---
 
-#### 2. Rise and Fall of programming languages
+### 2. Rise and Fall of programming languages
 
 **Short name**: programming_languages
 
@@ -37,7 +32,7 @@ In 1847, Dr. Semmelweis instated a policy where doctors had to use a chlorine so
 
 ---
 
-#### 3. Iris dataset exploration
+### 3. Iris dataset exploration
 
 **Short name**: iris
 
@@ -51,7 +46,7 @@ In 1847, Dr. Semmelweis instated a policy where doctors had to use a chlorine so
 
 ---
 
-#### 4. Visualizing Inequalities in Life Expectancy
+### 4. Visualizing Inequalities in Life Expectancy
 
 **Short name**: life_expectancy_inequalities
 
@@ -67,7 +62,7 @@ Let's create some plots to explore the inequalities about life expectancy at bir
 
 ---
 
-#### 5. SMS spam detection
+### 5. SMS spam detection
 
 **Short name**: sms_spam
 
@@ -85,7 +80,7 @@ In the case under study, spam is an annoyance to the user and thus detrimental t
 
 ---
 
-#### 6. Analyze International Debt Statistics
+### 6. Analyze International Debt Statistics
 
 **Short name**: international_debt_statistics
 
@@ -102,7 +97,7 @@ In this notebook, we are going to analyze international debt data collected by T
 
 ---
 
-#### 7. Analyzing Students' Mental Health
+### 7. Analyzing Students' Mental Health
 
 **Short name**: student_mental_health
 
@@ -116,7 +111,7 @@ The study found that international students have a higher risk of mental health 
 
 ---
 
-#### 8. Name Game Gender Prediction using Sound
+### 8. Name Game Gender Prediction using Sound
 
 **short name**: gender_prediction
 
@@ -134,7 +129,7 @@ One way to tackle this challenge is to write a program that checks if two string
 
 ---
 
-#### 9. Bad Passwords and the NIST Guidelines
+### 9. Bad Passwords and the NIST Guidelines
 
 **Short name**: bad_passwords
 
@@ -150,7 +145,7 @@ In this project, you will take a list of user passwords and, using publication 8
 
 ---
 
-#### 10. Naïve Bees: Predict Species from Images
+### 10. Naïve Bees: Predict Species from Images
 
 **Short name**: naive_bees
 
