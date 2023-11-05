@@ -16,39 +16,28 @@ Matt -->
 
 ---
 
-## Data science Portfolio
+## Selected data science projects
 
 ### 1. Dr. Semmelweis and the Discovery of Handwashing
 
-**Short name**: Semmelweiss
+In 1847, Dr. Semmelweis instated a policy where doctors had to use a chlorine solution to wash their hands between performing autopsies and seeing patients. The maternal mortality rate drastically decreased as seen in the plot below. In this project, I used the Semmelweiss data to prove that handwashing is a medical necessity.
 
-**Language**: R
+<br>
 
-**Tags**: Data manipulation, Data visualization, Probability & statistics, Importing & cleaning data, Case studies
+<img src="images/Number of births by city.jpg"  style="width:400px;" />
+<img src ="images/Number of deaths by clinic.jpg"  style="width:400px;" />
 
-**Principal packages**: Tidyverse, Patchwork
+<br>
 
-**Description**: In the mid 1800s, Dr. Ignaz Semmelweis was an obstetrician at Vienna General Hospital. At the time, maternal death due to puerperal fever was common, but he was particularly concerned that the death rate in his clinic (Clinic 1) was much higher than the death rate in another clinic at Vienna General Hospital (Clinic 2). So what was the difference between these two clinics? Doctors and midwives worked in Clinic 1, while only midwives worked in Clinic 2. This led Dr. Semmelweis to hypothesize that doctors carried deadly "cadaverous particles" from their autopsies to their patients in Clinic 2.
+[![](https://img.shields.io/badge/R-white?logo=R&logoColor=%23276DC3)](#) [![](https://img.shields.io/badge/Tidyverse-white?logo=tidyverse&logoColor=%231A162D)](#) [![](https://img.shields.io/badge/Patchwork-white)](#) 
 
-In 1847, Dr. Semmelweis instated a policy where doctors had to use a chlorine solution to wash their hands between performing autopsies and seeing patients. The maternal mortality rate drastically decreased as seen in the plot below. Sadly, germ theory (the idea that there are particles that cause disease) was not widely accepted at the time, so his hypothesis was rejected by most doctors.
+Skills developed: Manipulation, Visualization, Probability & statistics
 
----
+[View code on Github](https://github.com/petoulemonde/Semmelweiss_project/blob/master/notebook_Dr.-Semmelweis-and-the-Discovery-of-Handwashing.html)
 
-### 2. Rise and Fall of programming languages
+----
 
-**Short name**: programming_languages
-
-**Language**: R
-
-**Tags**: Data manipulation, Data visualization, Importing & cleaning data
-
-**Principal packages:**: tidyverse, skimr.
-
-**Description**: It's important to stay informed about trends in programming languages and technologies. Knowing what languages are growing or shrinking can help you decide where to invest. An excellent source to gain a better understanding of popular technologies is [Stack Overflow](https://stackoverflow.com/). Stack overflow is an online question-and-answer site for coding topics. By looking at the number of questions about each technology, you can get an idea of how many people are using it.
-
----
-
-### 3. Iris dataset exploration
+### 2. Iris dataset exploration
 
 **Short name**: iris
 
@@ -62,23 +51,7 @@ In 1847, Dr. Semmelweis instated a policy where doctors had to use a chlorine so
 
 ---
 
-### 4. Visualizing Inequalities in Life Expectancy
-
-**Short name**: life_expectancy_inequalities
-
-**Language**: R
-
-**Tags**: Data manipulation, Data visualization, Importing & cleaning data 
-
-**Principal packages**: dplyr, tidyr, ggplot2
-
-**Description**: Life expectancy at birth is a measure of the average a living being is expected to live. It takes into account several demographic factors like gender, country, or year of birth.
-Life expectancy at birth can vary along time or between countries because of many causes: the evolution of medicine, the degree of development of countries, or the effect of armed conflicts. Life expectancy varies between gender, as well. The data shows that women live longer that men. Why? Several potential factors, including biological reasons and the theory that women tend to be more health conscious.
-Let's create some plots to explore the inequalities about life expectancy at birth around the world. We will use a dataset from the United Nations Statistics Division.
-
----
-
-### 5. SMS spam detection
+### 3. SMS spam detection
 
 **Short name**: sms_spam
 
@@ -96,7 +69,57 @@ In the case under study, spam is an annoyance to the user and thus detrimental t
 
 ---
 
-### 6. Analyze International Debt Statistics
+### 4. Naïve Bees: Predict Species from Images
+
+**Short name**: naive_bees
+
+**Language**: Python
+
+**Tags**: Data manipulation, Data visualization, Machine learning
+
+**Principal packages**: pandas, PIL, numpy, matplotlib, scikit-image, scikit-learn
+
+**Description**: The question at hand is: can a machine identify a bee as a honey bee or a bumble bee? These bees have different behaviors and appearances, but given the variety of backgrounds, positions, and image resolutions it can be a challenge for machines to tell them apart.
+
+Being able to identify bee species from images is a task that ultimately would allow researchers to more quickly and effectively collect field data. Pollinating bees have critical roles in both ecology and agriculture, and diseases like colony collapse disorder threaten these species. Identifying different species of bees in the wild means that we can better understand the prevalence and growth of these important insects.
+
+---
+
+## Skill-based projects
+
+---
+
+### 1. Rise and Fall of programming languages
+
+**Short name**: programming_languages
+
+**Language**: R
+
+**Tags**: Data manipulation, Data visualization, Importing & cleaning data
+
+**Principal packages:**: tidyverse, skimr.
+
+**Description**: It's important to stay informed about trends in programming languages and technologies. Knowing what languages are growing or shrinking can help you decide where to invest. An excellent source to gain a better understanding of popular technologies is [Stack Overflow](https://stackoverflow.com/). Stack overflow is an online question-and-answer site for coding topics. By looking at the number of questions about each technology, you can get an idea of how many people are using it.
+
+---
+
+### 2. Visualizing Inequalities in Life Expectancy
+
+**Short name**: life_expectancy_inequalities
+
+**Language**: R
+
+**Tags**: Data manipulation, Data visualization, Importing & cleaning data 
+
+**Principal packages**: dplyr, tidyr, ggplot2
+
+**Description**: Life expectancy at birth is a measure of the average a living being is expected to live. It takes into account several demographic factors like gender, country, or year of birth.
+Life expectancy at birth can vary along time or between countries because of many causes: the evolution of medicine, the degree of development of countries, or the effect of armed conflicts. Life expectancy varies between gender, as well. The data shows that women live longer that men. Why? Several potential factors, including biological reasons and the theory that women tend to be more health conscious.
+Let's create some plots to explore the inequalities about life expectancy at birth around the world. We will use a dataset from the United Nations Statistics Division.
+
+---
+
+### 3. Analyze International Debt Statistics
 
 **Short name**: international_debt_statistics
 
@@ -113,7 +136,7 @@ In this notebook, we are going to analyze international debt data collected by T
 
 ---
 
-### 7. Analyzing Students' Mental Health
+### 4. Analyzing Students' Mental Health
 
 **Short name**: student_mental_health
 
@@ -127,7 +150,7 @@ The study found that international students have a higher risk of mental health 
 
 ---
 
-### 8. Name Game Gender Prediction using Sound
+### 5. Name Game Gender Prediction using Sound
 
 **short name**: gender_prediction
 
@@ -145,7 +168,7 @@ One way to tackle this challenge is to write a program that checks if two string
 
 ---
 
-### 9. Bad Passwords and the NIST Guidelines
+### 6. Bad Passwords and the NIST Guidelines
 
 **Short name**: bad_passwords
 
@@ -158,22 +181,6 @@ One way to tackle this challenge is to write a program that checks if two string
 **Description**: Almost every web service you join will require you to come up with a password. But what makes a good password? In June 2017 the National Institute of Standards and Technology (NIST) published publication 800-63B titled Digital Identity Guidelines: Authentication and Lifecycle Management. This publication doesn't tell you what is a good password, but it does have specific rules for what is a bad password.
 
 In this project, you will take a list of user passwords and, using publication 800-63B, you will write code that automatically detects and flags the bad passwords.
-
----
-
-### 10. Naïve Bees: Predict Species from Images
-
-**Short name**: naive_bees
-
-**Language**: Python
-
-**Tags**: Data manipulation, Data visualization, Machine learning
-
-**Principal packages**: pandas, PIL, numpy, matplotlib, scikit-image, scikit-learn
-
-**Description**: The question at hand is: can a machine identify a bee as a honey bee or a bumble bee? These bees have different behaviors and appearances, but given the variety of backgrounds, positions, and image resolutions it can be a challenge for machines to tell them apart.
-
-Being able to identify bee species from images is a task that ultimately would allow researchers to more quickly and effectively collect field data. Pollinating bees have critical roles in both ecology and agriculture, and diseases like colony collapse disorder threaten these species. Identifying different species of bees in the wild means that we can better understand the prevalence and growth of these important insects.
 
 ---
 
