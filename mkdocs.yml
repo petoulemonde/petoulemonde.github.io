@@ -8,7 +8,7 @@ site_description: >-
 
 # Repository
 repo_name: petoulemonde/petoulemonde.github.io
-repo_url: https://github.com/petoulemonde.petoulemonde.github.io
+repo_url: https://github.com/petoulemonde/petoulemonde.github.io
 
 # Configuration
 theme:
