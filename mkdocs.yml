@@ -1,0 +1,25 @@
+# Project information
+site_name: Pierre-Etienne's portfolio
+site_url: https://petoulemmonde.github.io/
+site_author: Pierre-Etienne Toulemonde
+site_description: >-
+  I'am Pierre-Etienne Toulemonde, PharmD and Data scientist, and you are here on my data science portfolio
+
+
+# Repository
+repo_name: petoulemonde/petoulemonde.github.io
+repo_url: https://github.com/petoulemonde.petoulemonde.github.io
+
+# Configuration
+theme:
+  name: material
+
+# Additional configuration
+extra:
+  analytics:
+    provider: google
+    property: G-4PZ4G86YR0
+
+# Page tree
+nav:
+  - Home: index.md
