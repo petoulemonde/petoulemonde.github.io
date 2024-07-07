@@ -1,0 +1,902 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="I'am Pierre-Etienne Toulemonde, PharmD and Data scientist, and you are here on my data science portfolio">
+      
+      
+        <meta name="author" content="Pierre-Etienne Toulemonde">
+      
+      
+        <link rel="canonical" href="https://petoulemmonde.github.io/horse_health_prediction_project/readme/">
+      
+      
+        <link rel="prev" href="../../catalogue-open-data-sante/">
+      
+      
+        <link rel="next" href="../../naive_bees_project/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
+    
+    
+      
+        <title>Predict Health Outcomes of Horses - Pierre-Etienne's data science portfolio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6543a935.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-4PZ4G86YR0"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-4PZ4G86YR0",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-4PZ4G86YR0",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#the-project" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Pierre-Etienne&#39;s data science portfolio" class="md-header__button md-logo" aria-label="Pierre-Etienne's data science portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Pierre-Etienne's data science portfolio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Predict Health Outcomes of Horses
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/petoulemonde/petoulemonde.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    petoulemonde/petoulemonde.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Pierre-Etienne&#39;s data science portfolio" class="md-nav__button md-logo" aria-label="Pierre-Etienne's data science portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Pierre-Etienne's data science portfolio
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/petoulemonde/petoulemonde.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    petoulemonde/petoulemonde.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Current project
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Current project
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../catalogue-open-data-sante/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Health open data catalog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Previous data science projects
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Previous data science projects
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Predict Health Outcomes of Horses
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Predict Health Outcomes of Horses
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      The project
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The project">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#project-board" class="md-nav__link">
+    <span class="md-ellipsis">
+      Project Board
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#main-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Main results
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#future-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future work
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../naive_bees_project/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Naïve Bees: Predict Species from Images
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sms_spam_project/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SMS spam detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../iris_project/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Iris dataset exploration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Semmelweiss_project/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dr. Semmelweis and the Discovery of Handwashing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Previous skills based projects
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Previous skills based projects
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../US_stocks_prediction_project/readme/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Predict US stocks closing movements
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bad_passwords_project/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bad Passwords and the NIST Guidelines
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gender_prediction_project/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Name Game Gender Prediction using Sound
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../student_mental_health_project/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Analyzing Students' Mental Health
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../international_debt_statistics_project/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Analyze International Debt Statistics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../life_expectancy_inequalities_project/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Visualizing Inequalities in Life Expectancy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../programming_languages_project/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rise and Fall of programming languages
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      The project
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The project">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#project-board" class="md-nav__link">
+    <span class="md-ellipsis">
+      Project Board
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#main-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Main results
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#future-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future work
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>Predict Health Outcomes of Horses</h1>
+
+<h2 id="the-project">The project</h2>
+<p>This project come from the following Kaggle competition : <a href="https://www.kaggle.com/competitions/playground-series-s3e22/overview">https://www.kaggle.com/competitions/playground-series-s3e22/overview</a>. The dataset for this competition (both train and test) was generated from a deep learning model trained on a portion of the Horse Survival Dataset. Feature distributions are close to, but not exactly the same, as the original. Feel free to use the original dataset as part of this competition, both to explore differences as well as to see whether incorporating the original in training improves model performance. The link to the Kaggle competiton is . The objective of this project is to train the model to prediction outcome. The metric is micro-averaged F1-score.</p>
+<p><br></p>
+<p><img alt="" src="../images/f1_score_results_lightgbm.JPG" /> <img alt="" src="../images/n_estimator_f1_score_graph_lightgbm.JPG" /></p>
+<p><br></p>
+<p><a href="#"><img alt="" src="https://img.shields.io/badge/Python-white?logo=Python" /></a> <a href="#"><img alt="" src="https://img.shields.io/badge/pandas-white?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMIAAAEDCAMAAABQ/CumAAAAeFBMVEX///8TB1QAAEb/ygDnBIgPAFLNzNYTAFnQ0NgMAFcAAETb2eP39/oUBlfV1N7/xwDmAID/9tfLydcjG17/4Yz//vbCwM3ykcL61OfoBIwyKmgAADYAAE0AAErx8PTIxdT/+un/34T85/Lyir/lAHv50eX+9fkpH2Ma8J+4AAACEklEQVR4nO3dzVIaQRSAUYNCEIGoiYmJivnP+79hFrmLVHELZ6pnmG483xqaPruh5lb32ZkkSZIkSZIkvb52z7dZU2+rT4uH2X6rx6m31afF7M1+87dTb6tPCDWEUEMINYRQQ5MS1tu0nqtMSrhKn26e1v1WmZawyn58g4DQL4QIoSyECKEshAihLIQIoSyECKEshAihLIQIoSyECKEshAihLIQIoSyECOFA6cvM5a4nYb29yjoO4WmVvM58WPQkbF8e+RqPcDlPVp4t+xLS/W0QEBCqI8yTLpsizN8n/WmJ0CEEBAQEBAQEBIT2CF+/fci6a4hw8y7rvC3CeRYCAgICAgICAgICAgICwlCEtJYIdzdp/3+kdkKHToFQ+RjJMCEcCKF7CAdC6B7CgRC6Nylh9zGtJUJ6uNCsnsOFhhkvPAHC9x+fsloi/Pp5nXTREuH++iLpMwICAgICAgICAgICAgKC/87R7/u0lggdQkBAQEBAQEB4dYQON67UTqh9KuwkDlRBQED4R8gOF5o3Rdh8yepLGO0ez6MNPO+WQ9w3NilhvBAihLIQIoSyECKEshAihLIQIoSyECKEshAihLIQIoSyECKEshAihLIQIoSyEKJt+lL0SNeADUR4TG9cGWXHew10AkPP4aRBO9ohEuOFUEMINYRQQwg1dAKEDvd41t5t2u7lL0qSJEmSJEnSyfUXeomSFq0EzbkAAAAASUVORK5CYII=" /></a> <a href="#"><img alt="" src="https://img.shields.io/badge/sklearn-white?logo=scikit-learn" /></a> <a href="#"><img alt="" src="https://img.shields.io/badge/Google-white?logo=mlflow" /></a> <a href="#"><img alt="" src="https://img.shields.io/badge/Optuna-white?logo=data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBUODAsLDBkSEw8VHhsgHx4bHR0hJTApISMtJB0dKjkqLTEzNjY2ICg7Pzo0PjA1NjP/2wBDAQkJCQwLDBgODhgzIh0iMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzP/wAARCAAKAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgME/8QAIxAAAgECBQUBAAAAAAAAAAAAAQIDABEEBhIhQQUTIjFScf/EABQBAQAAAAAAAAAAAAAAAAAAAAT/xAAZEQEAAwEBAAAAAAAAAAAAAAABAAIDESH/2gAMAwEAAhEDEQA/AF4xEnU0lx2NOqVm8Q1/Df0Pm1aoetZl7KdqWVo9I0sYQxI4NyN/2q5ghiGcoYhGgjlZDImkWcn2SOafgBQFUAKNgBxTNLlQeQWWa2fZ/9k=" /></a> <a href="#"><img alt="" src="https://img.shields.io/badge/Dagshub-white?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAMAAAC67D+PAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAADeUExURfT19fj5+f///6KWlpmHiOTk5P7+/svFxcjBwbSen5VLToFjZLi3t9vc2+Pj4ubm5qGfn4FWV8CrrNvR0ZpVWHRAQmRfX3Nzcs3Lw4yMillMTIVPUdzS0vn5+a6RkmZRUmRkZG9vb9jWzYeGhF1aWol6e/f29sDAwGRjY1FRUWlpZ4WEgU9PT5WVlb+/v2NjY39+e768tKWjnLa0rIWEgKenp9nZ2ZGRjfPw5Pv466+upuXi1vbz5tva1vv7/Nvb2OXj29rZ0tHPx9fVz+Ph2uXk4ff39/Ly8fj4+P39/nQBThAAAAABYktHRAJmC3xkAAAAB3RJTUUH5wsdFQI7i+bV9AAAAAFvck5UAc+id5oAAABrSURBVAjXY2BgZIICBmYWVhDNxs7BwMnFzcPLxy8gKMQgLCIqJi4hKSUtwyArJ6+gqKSsoqrGwKSuoamlpK2jy8TApKdvYGhkbGIKZJqZW1haWdvYsjEw2dk7ODo5u7gCRZmY3Nzc3Tw8mQCpNAtuwFWNdgAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMy0xMS0yOVQyMTowMjo1MyswMDowMM8jN1kAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjMtMTEtMjlUMjE6MDI6NTMrMDA6MDC+fo/lAAAAKHRFWHRkYXRlOnRpbWVzdGFtcAAyMDIzLTExLTI5VDIxOjAyOjU5KzAwOjAwTRvxdAAAAABJRU5ErkJggg==" /></a> <a href="#"><img alt="" src="https://img.shields.io/badge/CatBoost-white?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAMAAAC67D+PAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAADhUExURf/sov/qlv/ql//rl//0yf/////SHf/MAf/NA//OCP/IA//MAP/YPP/76v/RGv/LAP/YO//ysv+xNf8+AP+WAP/OAP/ojP/RGf/QFv/jdP/62f+pRP8dAP+RJv/UG//TI//20v/eWf/rmP/bQP+/F/+hBf/nkf/gYv/eWv/NB//UI/+cK/9EC/+MHv/VJv/OCf/gY//HAP85Av8AAP8zAv/EAP/UKv/32f9zAP8gAP9uAP/NAv/qlf/SIP/NBv/OB//LB/+9B//KB//NBP/aRf/87v/wsv/uqf/vqf/uqP/21PpYK3QAAAABYktHRAX4b+nHAAAAB3RJTUUH5wsdFQwDPWdA5AAAAHRJREFUCNdjYGBkYmJiZmRhZWVgY+fg5ODi5uFlZeDjFxAUEhYRFWNlEJeQlJKWkZWTV2CQUFRSVlFVU+fXYODT1NLW0dXT5zZg4OM2NDI2MeU2MwcyuS0srfitbVgZbO3sHRydnF1cWRnc3N3dPdw9vVhZAdnCDHQNcWEzAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIzLTExLTI5VDIxOjExOjU4KzAwOjAw550HYAAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMy0xMS0yOVQyMToxMTo1OCswMDowMJbAv9wAAAAodEVYdGRhdGU6dGltZXN0YW1wADIwMjMtMTEtMjlUMjE6MTI6MDMrMDA6MDBgBX+eAAAAAElFTkSuQmCC" /></a> <a href="#"><img alt="" src="https://img.shields.io/badge/LightGBM-white?logo=data:image/png;base64,/9j/4AAQSkZJRgABAQIAdgB2AAD/4QBiRXhpZgAATU0AKgAAAAgABQESAAMAAAABAAEAAAEaAAUAAAABAAAASgEbAAUAAAABAAAAUgEoAAMAAAABAAMAAAITAAMAAAABAAEAAAAAAAAAAAB2AAAAAQAAAHYAAAAB/9sAQwADAgICAgIDAgICAwMDAwQGBAQEBAQIBgYFBgkICgoJCAkJCgwPDAoLDgsJCQ0RDQ4PEBAREAoMEhMSEBMPEBAQ/9sAQwEDAwMEAwQIBAQIEAsJCxAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQ/8AAEQgACgAKAwERAAIRAQMRAf/EABUAAQEAAAAAAAAAAAAAAAAAAAcI/8QAIxAAAgEDBAEFAAAAAAAAAAAAAQIDBAURAAYHMRITIjJRYf/EABYBAQEBAAAAAAAAAAAAAAAAAAUHCP/EACURAAECBAYCAwAAAAAAAAAAAAECEQADBDEFBgcSIVEiQRNhcv/aAAwDAQACEQMRAD8As3hHZmz7DRbfv/GkgoqS4TelX1t+tzx3O6AKT4QM3tSLODiNcHx+R7IFXgUvKVbJpTNlhSyxchS1lj4jrsgC14XxDPWLaiJFYgqTTp52bSlIHfN/0Xf01ooTJ+9PwRAVBUTz83qs88kiwXBoog7EhECNhVz0PwazWionVGo4+ZZVtmkBySw2ngPYfUU4y0S8seAAdDlvZcQ7DrWkxaJiY//Z" /></a> <a href="#"><img alt="" src="https://img.shields.io/badge/Xgboost-white?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAMAAAC67D+PAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAACuUExURQAAAC6o4Cum3yak3zqt4uvx+Wu/6Eex4zWr4Rqf3BCb2zCn3y2m3y2m3iWj3iyl3i+n3y6n3jKo3y+o4C+o4C2n3y2n3yel30ey5Fu75zOq4Sel3yel3yyn3yqm3yak3imm3ymm3yqm3yyn3yqm3yml3yak3yil3yWk3iel3iel3yel3yml3yil3yqm3zGo4C6n3yql3iKi3Sik3Sym3yym3yum3iym3i+n3wAAAEVLK78AAAA5dFJOUwAAAAAAAAAAAAAAAAAAAAAAAAASGSIgIQIBDF6KeYSdaF9jZntmbn6GhYGEgIJhCAcNDAgKCQsKCankUGkAAAABYktHRACIBR1IAAAACXBIWXMAAA7YAAAO2AEHSJGmAAAAB3RJTUUH5wsdFRIsQvdCYgAAAAFvck5UAc+id5oAAABPSURBVAjXY2DAChgZmZiYWVjZ2DkYhEVExcQlOLkkpRikZWTl5BUUlZRVGFTV1DU0tbR1dPUY9A0MjYxNTM3MLRi4eXj5+AUEeAWFsBsLADroBl2z3xGNAAALQGVYSWZJSSoACAAAAAgAAAEEAAEAAADoAwAAAQEEAAEAAAD0AQAAAgEDAAMAAABuAAAAGgEFAAEAAAB0AAAAGwEFAAEAAAB8AAAAKAEDAAEAAAADAAAAMQECAAwAAACEAAAAMgECABQAAACQAAAApAAAAAgACAAIACYAAAABAAAAJgAAAAEAAABHSU1QIDIuMTAuOAAyMDE5OjA0OjIzIDE0OjEwOjI0AAgAAAEEAAEAAAAAAQAAAQEEAAEAAACAAAAAAgEDAAMAAAAKAQAAAwEDAAEAAAAGAAAABgEDAAEAAAAGAAAAFQEDAAEAAAADAAAAAQIEAAEAAAAQAQAAAgIEAAEAAAAvCgAAAAAAAAgACAAIAP/Y/+AAEEpGSUYAAQEAAAEAAQAA/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAgAEAAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A+f6KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAoor15PDWmeKPCGjra20ViZbeBvtK28SvmMiKd3PBcfLM4XcCxC9+K1p0nUuo9FcxrVo0rOWzdjyGivaG0bRrK0svD39lQvdXVurvdCzTfFbBsSzl2RyHkIZEGcKzdVATNXULrwd4Wgs9OvbKCSRY9wSKwhuJlHUNM7leWySBk8dlUrnX6q1dykkl+fYxWMUrKEW29beXfXv0PIaK9W0i10DxLrFzrNhpsMdpYokbpJbpH5s0gYLmIFo9ipEx42tvYE7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" /></a></p>
+<p>Skills developed: Supervised learning (LightGBM? CatBoost, Xgboost), Model optimization (optuna), Model tracking (MLFlow)</p>
+<p>Link : <a href="https://github.com/petoulemonde/petoulemonde.github.io/tree/main/docs/horse_health_prediction_project">horse_health_prediction_project</a></p>
+<hr />
+<h4 id="project-board">Project Board</h4>
+<p>2023-11-25 : </p>
+<ul>
+<li>Add image of projects and packages</li>
+<li>End of project</li>
+</ul>
+<p>2023-11-23 : Creation of readme</p>
+<p>2023-11-22 : Project creation
+- Creation of notebook</p>
+<hr />
+<h4 id="main-results">Main results</h4>
+<p>The best model is the LightGBM model, with following parameters : n_estimators = 1046.
+The best score obtained is 0.43042071197411.</p>
+<hr />
+<h4 id="future-work">Future work</h4>
+<ol>
+<li>
+<p>Develop a better preprocessing method to optimise F1-score</p>
+</li>
+<li>
+<p>Implement a neural network model</p>
+</li>
+<li>
+<p>Found and implement an auto-ML system  </p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      
+    
+  </body>
+</html>
