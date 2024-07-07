@@ -1,5 +1,5 @@
 # Project information
-site_name: Pierre-Etienne's portfolio
+site_name: Pierre-Etienne's data science portfolio
 site_url: https://petoulemmonde.github.io/
 site_author: Pierre-Etienne Toulemonde
 site_description: >-
@@ -23,3 +23,20 @@ extra:
 # Page tree
 nav:
   - Home: index.md
+  - Current project : 
+    - "Health open data catalog": catalogue-open-data-sante/index.md
+  - Previous data science projects :
+    - "Predict Health Outcomes of Horses": horse_health_prediction_project/readme.md
+    - "Naïve Bees: Predict Species from Images": naive_bees_project/README.md
+    - "SMS spam detection": sms_spam_project/README.md
+    - "Iris dataset exploration": iris_project/README.md
+    - "Dr. Semmelweis and the Discovery of Handwashing": Semmelweiss_project/README.md
+  - Previous skills based projects : 
+    - "Predict US stocks closing movements": US_stocks_prediction_project/readme.md
+    - "Bad Passwords and the NIST Guidelines": bad_passwords_project/README.md
+    - "Name Game Gender Prediction using Sound": gender_prediction_project/README.md
+    - "Analyzing Students' Mental Health": student_mental_health_project/README.md
+    - "Analyze International Debt Statistics": international_debt_statistics_project/README.md
+    - "Visualizing Inequalities in Life Expectancy": life_expectancy_inequalities_project/README.md
+    - "Rise and Fall of programming languages": programming_languages_project/README.md
+  

@@ -1,0 +1,319 @@
+---
+title: "notebook_Dr. Semmelweis and the Discovery of Handwashing"
+author: "Pierre-Etienne TOULEMONDE"
+date: "2022-12-08"
+output:
+  html_document:
+    toc: TRUE
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# The Discovery of Handwashing
+
+<img src="https://www.sciencesetavenir.fr/assets/img/2018/07/02/cover-r4x3w1200-5b39fdfe82ba3-ignace-semmelweis.jpg" alt="drawing" style="width:400px;"/>
+
+In the mid 1800s, Dr. Ignaz Semmelweis was an obstetrician at Vienna General Hospital. At the time, maternal death due to puerperal fever was common, but he was particularly concerned that the death rate in his clinic (Clinic 1) was much higher than the death rate in another clinic at Vienna General Hospital (Clinic 2). So what was the difference between these two clinics? Doctors and midwives worked in Clinic 1, while only midwives worked in Clinic 2. This led Dr. Semmelweis to hypothesize that doctors carried deadly "cadaverous particles" from their autopsies to their patients in Clinic 2.
+
+In 1847, Dr. Semmelweis instated a policy where doctors had to use a chlorine solution to wash their hands between performing autopsies and seeing patients. The maternal mortality rate drastically decreased as seen in the plot below. Sadly, germ theory (the idea that there are particles that cause disease) was not widely accepted at the time, so his hypothesis was rejected by most doctors.
+
+In this project, I investigate : 
+
+1.  the death rates for each year in the both datasets
+
+2.  In each clinic, the average death rate for the years before handwashing was introduced in 1847
+
+3.  The average death rates in the Vienna General Hospital both before and after pathological autopsies were introduced in 1823
+
+[![](https://img.shields.io/badge/R-white?logo=R&logoColor=%23276DC3)](#) [![](https://img.shields.io/badge/Tidyverse-white?logo=tidyverse&logoColor=%231A162D)](#) [![](https://img.shields.io/badge/Patchwork-white)](#) 
+
+Skills developed: Manipulation, Visualization, Probability & statistics
+
+## Load libraries
+```{r, warning = FALSE}
+# install.packages("librarian")
+librarian::shelf(tidyverse, 
+                 patchwork, 
+                 quiet = TRUE)
+```
+
+
+## Load datasets
+
+```{r importations, warning = FALSE}
+clinic_data <- read.csv("datasets/clinic_data.csv")
+hospital_data <- read.csv("datasets/hospital_data.csv")
+```
+
+The two datasets you will use are from Dr. Semmelweis's original 1859 publication<sup>1</sup>. Here are the details:
+
+::: {style="background-color: #efebe4; color: #05192d; text-align:left; vertical-align: middle; padding: 15px 25px 15px 25px; line-height: 1.6;"}
+::: {style="font-size:20px"}
+<b>datasets/clinic_data.csv</b>
+:::
+
+This contains yearly clinic-level data on births and maternal deaths in each of the two maternity clinics at Vienna General Hospital.
+
+<ul>
+
+<li><b><code>year</code>:</b> each year from 1833 to 1858</li>
+
+<li><b><code>births</code>:</b> total number of births in the clinic</li>
+
+<li><b><code>deaths</code>:</b> number of maternal deaths in the clinic</li>
+
+<li><b><code>clinic</code>:</b> clinic (either <code>clinic_1</code> or <code>clinic_2</code>). Doctors and midwives worked in Clinic 1, while only midwives worked in Clinic 2.</li>
+
+</ul>
+:::
+
+::: {style="background-color: #efebe4; color: #05192d; text-align:left; vertical-align: middle; padding: 15px 25px 15px 25px; line-height: 1.6;"}
+::: {style="font-size:20px"}
+<b>datasets/hospital_data.csv</b>
+:::
+
+This contains yearly hospital-level data on births and maternal deaths.
+
+<ul>
+
+<li><b><code>year</code>:</b> each year from 1784 to 1848</li>
+
+<li><b><code>births</code>:</b> total number of births at the hospital</li>
+
+<li><b><code>deaths</code>:</b> number of maternal deaths at the hospital</li>
+
+<li><b><code>hospital</code>:</b> hospital (either <code>Vienna</code> or <code>Dublin</code>). At the Vienna General Hospital where Dr. Semmelweis worked, doctors began performing pathological autopsies in 1823. At the Dublin Rotunda Hospital, doctors did not perform pathological autopsies at all.</li>
+
+</ul>
+:::
+
+<sup>1</sup><a href="http://graphics8.nytimes.com/images/blogs/freakonomics/pdf/the%20etiology,%20concept%20and%20prophylaxis%20of%20childbed%20fever.pdf">Ignaz Semmelweis: The etiology, concept, and prophylaxis of childbed fever.</a>
+
+### Dataset summaries
+```{r general_explorations, warning = FALSE}
+# ---------- 2. Data exploration ----------
+print(data.frame(
+  Variables = c("Number of lines", 
+               "Nombre de columns",
+               "Nombre de continuous columns", 
+               "Nombre de discretous variables", 
+               "Memory allocation"),
+  Clinic_data = c(nrow(clinic_data), 
+                  ncol(clinic_data),
+                  length(select_if(clinic_data,is.numeric)), 
+                  length(select(clinic_data, -names(select_if(clinic_data, is.numeric) ) ) ), 
+                  paste(as.character(round(object.size(clinic_data)/1024), 2), "kb") ),
+  Hospital_data = c(nrow(hospital_data), 
+                  ncol(hospital_data),
+                  length(select_if(hospital_data,is.numeric)), 
+                  length(select(hospital_data, -names(select_if(hospital_data, is.numeric) ) ) ), 
+                  paste(as.character(round(object.size(hospital_data)/1024), 2), "kb") ) ) )
+```
+
+### Clinic dataset
+
+#### Numeric description
+
+The ten first row of clinic_dataset are :
+
+```{r head_clinic_data, warning = FALSE}
+head(clinic_data, n = 10)
+```
+
+About missing data :
+
+```{r missing__clinic_data, warning = FALSE}
+print(data.frame(variables = names(clinic_data), 
+                 n_NA = apply(clinic_data, 2, function(.x) {sum(is.na(.x) )} ), 
+                 percent_NA = apply(clinic_data, 2, 
+                                    function(.x) { paste(round(sum(is.na(.x) ) / 
+                                                                 nrow(clinic_data) * 100, 2) , "%") } ) ) )
+```
+
+#### Graphic description
+
+-   `births`:
+
+```{r graph_clinic_data, warning = FALSE, error = FALSE}
+p1 <- clinic_data %>%
+        filter(clinic == "clinic_1") %>%
+        ggplot(aes(x=year, y = births, fill = year)) + 
+          geom_col() +
+          theme(legend.position = "none")
+p2 <- clinic_data %>%
+        filter(clinic == "clinic_2") %>%
+        ggplot(aes(x=year, y = births, fill = year)) + 
+          geom_col() +
+          theme(legend.position = "none")
+q <- ggplot(clinic_data, aes(x=year, y = births, fill = clinic)) + 
+  geom_col(position = position_dodge2())
+(p1 + p2) / q # Display of graphics
+```
+
+-   `deaths`:
+
+```{r graph_2_clinic_data, warning = FALSE, error = FALSE}
+p1 <- clinic_data %>%
+        filter(clinic == "clinic_1") %>%
+        ggplot(aes(x=year, y = deaths, fill = year)) + 
+          geom_col() +
+          theme(legend.position = "none")
+p2 <- clinic_data %>%
+        filter(clinic == "clinic_2") %>%
+        ggplot(aes(x=year, y = deaths, fill = year)) + 
+          geom_col() +
+          theme(legend.position = "none")
+q <- ggplot(clinic_data, aes(x=year, y = deaths, fill = clinic)) + 
+  geom_col(position = position_dodge2())
+(p1 + p2) / q # Display of graphics
+```
+
+```{r graph_2_clinic_data_export, warning = FALSE, error = FALSE}
+p1 <- clinic_data %>%
+        filter(clinic == "clinic_1") %>%
+        ggplot(aes(x=year, y = deaths, fill = year)) + 
+  labs(title = "Number of deaths by year, clinic_1", y = "Number of deaths") +
+          geom_col() +
+          theme(legend.position = "none")
+p2 <- clinic_data %>%
+        filter(clinic == "clinic_2") %>%
+        ggplot(aes(x=year, y = deaths, fill = year)) + 
+  labs(title = "Number of deaths by year, clinic_2", y = "Number of deaths") +
+          geom_col() +
+          theme(legend.position = "none")
+q <- ggplot(clinic_data, aes(x=year, y = deaths, fill = clinic)) + 
+  labs(title = "Number of deaths, by year and clinic", y = "Number of deaths") +
+  geom_col(position = position_dodge2())
+
+ggsave("images/Number of deaths by clinic.jpg", plot = (p1 + p2) / q)
+```
+### Hospital dataset
+
+### Numeric description
+
+The ten first row of hospital_dataset are :
+
+```{r head_hospital_data, warning = FALSE}
+head(hospital_data, n = 10)
+```
+
+```{r missing_hospital_data, warning = FALSE}
+print(data.frame(variables = names(hospital_data), 
+                 n_NA = apply(hospital_data, 2, function(.x) {sum(is.na(.x) )} ), 
+                 percent_NA = apply(hospital_data, 2, function(.x) { paste(round(sum(is.na(.x) ) / nrow(hospital_data) * 100, 2) , "%") } ) ) )
+```
+
+#### Graphic description
+
+-   `births`:
+
+```{r graph_hospital_data, warning = FALSE, error = FALSE}
+p1 <- hospital_data %>%
+        filter(hospital == "Dublin") %>%
+        ggplot(aes(x=year, y = births, fill = year)) + 
+          geom_col() +
+          theme(legend.position = "none")
+p2 <- hospital_data %>%
+        filter(hospital == "Vienna") %>%
+        ggplot(aes(x=year, y = births, fill = year)) + 
+          geom_col() +
+          theme(legend.position = "none")
+q <- ggplot(hospital_data, aes(x=year, y = births, fill = hospital)) + 
+  geom_col(position = position_dodge2())
+(p1 + p2) / q # Display of graphics
+```
+
+```{r graph_hospital_data_export, warning = FALSE, error = FALSE}
+p1 <- hospital_data %>%
+        filter(hospital == "Dublin") %>%
+        ggplot(aes(x=year, y = births, fill = year)) + 
+  labs(title = "Number of births by year, Dublin", y = "Number of births") +
+          geom_col() +
+          theme(legend.position = "none")
+p2 <- hospital_data %>%
+        filter(hospital == "Vienna") %>%
+        ggplot(aes(x=year, y = births, fill = year)) + 
+  labs(title = "Number of births by year, Vienna", y = "Number of births") +
+          geom_col() +
+          theme(legend.position = "none")
+q <- ggplot(hospital_data, aes(x=year, y = births, fill = hospital)) + 
+  labs(title = "Number of births, by year and city", y = "Number of births") +
+  geom_col(position = position_dodge2())
+
+ggsave("images/Number of births by city.jpg", plot = (p1 + p2) / q)
+```
+
+-   `deaths`:
+
+```{r graph_2_hospital_data, warning = FALSE, error = FALSE}
+p1 <- hospital_data %>%
+        filter(hospital == "Dublin") %>%
+        ggplot(aes(x=year, y = deaths, fill = year)) + 
+          geom_col() +
+          theme(legend.position = "none")
+p2 <- hospital_data %>%
+        filter(hospital == "Vienna") %>%
+        ggplot(aes(x=year, y = deaths, fill = year)) + 
+          geom_col() +
+          theme(legend.position = "none")
+q <- ggplot(hospital_data, aes(x=year, y = deaths, fill = hospital)) + 
+  geom_col(position = position_dodge2())
+(p1 + p2) / q # Display of graphics
+```
+
+## Death rates for each year
+
+The calculation of death rates is as follows: $$\frac{\text{Number of births}}{\text{Number of deaths}}$$ .
+
+The top 15 mortality rates, over the period and the 2 clinics, were :
+
+```{r Q1_death_rate_clinic_data}
+clinic_data %>% 
+  mutate(death_rate = deaths/births) %>%
+  select(-births, -deaths) %>%
+  top_n(15, death_rate)
+```
+
+The top 15 mortality rates, over the period and the 2 hospitals, were :
+
+```{r Q1_death_rate_hospital_data}
+hospital_data %>% 
+  mutate(death_rate = deaths/births) %>%
+  select(-births, -deaths) %>%
+  top_n(15, death_rate)
+```
+
+## Average death rate before handwashing
+
+```{r Q2_average_death_bifore_1847}
+rate_by_clinic_pre_handwashing <- clinic_data %>% 
+        mutate(death_rate = deaths/births) %>% 
+        filter (year < 1847) %>% 
+        group_by(clinic) %>%
+        summarise(avg_rate = mean(death_rate))
+print( rate_by_clinic_pre_handwashing ) 
+```
+
+The average death rate of `clinic_1` is `r rate_by_clinic_pre_handwashing$avg_rate[1]` . The average death rate of `clinic_2` is `r rate_by_clinic_pre_handwashing$avg_rate[2]` .
+
+## Average death rates in the Vienna General Hospital both before and after pathological autopsies
+
+```{r Q3_average_deaths_in_Vienna}
+rate_by_autopsies_introduced <- hospital_data %>% 
+        mutate(death_rate = deaths/births) %>% 
+        filter(hospital=="Vienna") %>%
+        mutate(autopsies_introduced = year >= 1823) %>%
+        group_by(autopsies_introduced) %>%
+        summarise(avg_rate = mean(death_rate))
+print( rate_by_autopsies_introduced )
+```
+
+In Vienna General Hospital, the average death rate was `r rate_by_autopsies_introduced$avg_rate[1]` before pre-handwashing implantation and `r rate_by_autopsies_introduced$avg_rate[2]` after implantation.
+
+## Session informations
+
+```{r session_info}
+sessionInfo()
+```
