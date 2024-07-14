@@ -1,16 +1,16 @@
-# Welcome to the Pierre-Etienne's data science portfolio
+# Welcome to Pierre-Etienne's data science portfolio
 
-## Who am I ?
+## My journey
 
-I'm a pharmacist by training, but above all I'm passionate about data science in all its facets: from EDA with table description packages to visualization using the latest web technologies, via modeling including AI.
+I'm a pharmacist, but above all I'm passionate about data science in all its facets: from EDA with table description packages to visualization using the latest web technologies, via modeling including AI.
 
-## My actuals projects
+## Current projects
 
 To catalog all the open data available in France, I maintain a catalog of open data in France (the site is in French).
 
 Link : [https://petoulemonde.github.io/catalogue-open-data-sante](https://petoulemonde.github.io/catalogue-open-data-sante)
 
-## My previous projects
+## Previous projects
 Projects are sorted from most recent to oldest.
 
 ### Data science projects

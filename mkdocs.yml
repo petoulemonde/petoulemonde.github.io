@@ -23,7 +23,7 @@ extra:
 # Page tree
 nav:
   - Home: index.md
-  - Current project : 
+  - Current projects : 
     - "Health open data catalog": catalogue-open-data-sante/index.md
   - Previous data science projects :
     - "Predict Health Outcomes of Horses": horse_health_prediction_project/readme.md
