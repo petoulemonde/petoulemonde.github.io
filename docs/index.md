@@ -7,13 +7,13 @@ I'm a pharmacist, but above all I'm passionate about data science in all its fac
 ## Articles published
 Data articles I've already published, from the most recent to the oldest.
 
-2/ [The Power of Pandas Plots: Backends](https://towardsdatascience.com/the-power-of-pandas-plots-backends-6a08d52071d2)
+2/ [The Power of Pandas Plots: Backends](https://towardsdatascience.com/the-power-of-pandas-plots-backends-6a08d52071d2) : 
 Create interactive graphics from Pandas effortlessly
 
-1/ [Full Guide to Building a Professional Portfolio with Python, Markdown, Git, and GitHub Pages](https://towardsdatascience.com/full-guide-to-build-a-professionnal-portfolio-with-python-markdown-git-and-github-page-for-66d12f7859f0)
+1/ [Full Guide to Building a Professional Portfolio with Python, Markdown, Git, and GitHub Pages](https://towardsdatascience.com/full-guide-to-build-a-professionnal-portfolio-with-python-markdown-git-and-github-page-for-66d12f7859f0) : 
 How to develop your image as a developer or data worker with a quality portfolio
 
-I publish my articles on Medium, here is the link to my Medium page: https://medium.com/@petoulemonde .
+I publish my articles on Medium, here is the link to my [my Medium page](https://medium.com/@petoulemonde).
 
 ## Previous projects
 Projects are sorted from most recent to oldest.
