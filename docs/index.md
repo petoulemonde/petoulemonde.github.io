@@ -4,11 +4,16 @@
 
 I'm a pharmacist, but above all I'm passionate about data science in all its facets: from EDA with table description packages to visualization using the latest web technologies, via modeling including AI.
 
-## Current projects
+## Articles published
+Data articles I've already published, from the most recent to the oldest.
 
-To catalog all the open data available in France, I maintain a catalog of open data in France (the site is in French).
+2/ [The Power of Pandas Plots: Backends](https://towardsdatascience.com/the-power-of-pandas-plots-backends-6a08d52071d2)
+Create interactive graphics from Pandas effortlessly
 
-Link : [https://petoulemonde.github.io/catalogue-open-data-sante](https://petoulemonde.github.io/catalogue-open-data-sante)
+1/ [Full Guide to Building a Professional Portfolio with Python, Markdown, Git, and GitHub Pages](https://towardsdatascience.com/full-guide-to-build-a-professionnal-portfolio-with-python-markdown-git-and-github-page-for-66d12f7859f0)
+How to develop your image as a developer or data worker with a quality portfolio
+
+I publish my articles on Medium, here is the link to my Medium page: https://medium.com/@petoulemonde .
 
 ## Previous projects
 Projects are sorted from most recent to oldest.
